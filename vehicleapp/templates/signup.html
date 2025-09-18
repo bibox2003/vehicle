@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Sign Up</title>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+   <style>
+      body, html {
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+      }
+      .main-content {
+         flex: 1;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 50px 0;
+      }
+      .signup_box {
+         width: 100%;
+         max-width: 450px;
+         background: #f8f9fa;
+         padding: 40px;
+         border-radius: 10px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      .signup_box h1 {
+         text-align: center;
+         margin-bottom: 30px;
+      }
+      .signup_box input {
+         margin-bottom: 20px;
+         padding: 12px;
+         border-radius: 5px;
+         border: 1px solid #ccc;
+         width: 100%;
+      }
+      .signup_box button {
+         width: 100%;
+         padding: 12px;
+         border: none;
+         border-radius: 5px;
+         background: #000;
+         color: white;
+         font-weight: bold;
+         font-size: 16px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+      }
+      .signup_box button:hover {
+         opacity: 0.9;
+      }
+      .footer_section {
+         margin-top: auto;
+      }
+      .signup_box p {
+         text-align: center;
+         margin-top: 15px;
+      }
+      /* Center logo in navbar */
+      .navbar {
+         justify-content: center;
+      }
+      .alert {
+         padding: 10px;
+         margin-bottom: 20px;
+         border-radius: 5px;
+      }
+   </style>
+</head>
+<body>
+   <!-- header start -->
+   <div class="header_section">
+      <nav class="navbar navbar-dark bg-dark">
+         <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+      </nav>
+   </div>
+   <!-- header end -->
+
+   <!-- signup section start -->
+   <div class="main-content">
+      <div class="signup_box">
+         <h1>Sign Up</h1>
+
+         {% if messages %}
+            {% for message in messages %}
+               <div class="alert alert-warning">{{ message }}</div>
+            {% endfor %}
+         {% endif %}
+
+         <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password1" placeholder="Password" required>
+            <input type="password" name="password2" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+         </form>
+         <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+      </div>
+   </div>
+   <!-- signup section end -->
+
+   <!-- footer start (like services page) -->
+   <div class="footer_section layout_padding margin_top_90">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-3 col-sm-6">
+               <h4 class="footer_taital">CONTACT INFO</h4>
+               <div class="call_text"><img src="{% static 'images/call-icon.png' %}"><span class="padding_left_10">+01 1234567890</span></div>
+               <div class="call_text"><img src="{% static 'images/mail-icon.png' %}"><span class="padding_left_10">demo@gmail.com</span></div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h4 class="footer_taital">OPENING HOURS</h4>
+               <div class="call_text">Mon-Sat 07:00 to 05:00</div>
+               <div class="call_text">Sunday 07:00 to 05:00</div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h4 class="footer_taital">SOCIAL MEDIA</h4>
+               <div class="social_icon">
+                  <ul>
+                     <li><a href="#"><img src="{% static 'images/fb-icon.png' %}"></a></li>
+                     <li><a href="#"><img src="{% static 'images/twitter-icon.png' %}"></a></li>
+                     <li><a href="#"><img src="{% static 'images/linkedin-icon.png' %}"></a></li>
+                     <li><a href="#"><img src="{% static 'images/instagram-icon.png' %}"></a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h4 class="footer_taital">Newsletter</h4>
+               <input type="text" class="enter_text" placeholder="Enter your email" name="newsletter_email">
+               <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+            </div>
+         </div>
+         <div class="copyright_section">
+            <h1 class="copyright_text">Copyright 2019 All Right Reserved <a href="https://html.design"></a></h1>
+         </div>
+      </div>
+   </div>
+   <!-- footer end -->
+
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
