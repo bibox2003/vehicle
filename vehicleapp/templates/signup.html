@@ -64,7 +64,6 @@
          text-align: center;
          margin-top: 15px;
       }
-      /* Center logo in navbar */
       .navbar {
          justify-content: center;
       }
@@ -97,18 +96,21 @@
 
          <form method="POST">
             {% csrf_token %}
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password1" placeholder="Password" required>
             <input type="password" name="password2" placeholder="Confirm Password" required>
             <button type="submit">Sign Up</button>
          </form>
+
          <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
       </div>
    </div>
    <!-- signup section end -->
 
-   <!-- footer start (like services page) -->
+   <!-- footer start -->
    <div class="footer_section layout_padding margin_top_90">
       <div class="container">
          <div class="row">
